@@ -1,0 +1,185 @@
+// $nav-color:#585858;
+
+@use './_animations' as anim;
+@use './_variables' as v;
+body {
+    background-size: 300% 200%;
+    animation: gradientAnimation 10s ease-in-out infinite;
+    background-image: linear-gradient(0deg,v.$bg1, v.$bg2, v.$bg1, v.$bg2, v.$bg1, v.$bg2, v.$bg1,v.$bg2);
+}
+.main{
+    flex:1 ;
+    height: 100vh;
+    // padding-bottom: 15vh;
+    position: relative;
+    .nav{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 22px;
+        padding: 20px;
+        color: v.$grey;
+        img{
+            width: 40px;
+            border-radius: 50%;
+        }
+    }
+    .main-container{
+        max-width: 900px;
+        margin: auto;
+        // margin: 0 30%;
+        .greet{
+            margin: 2rem 0;
+            font-size:56px;
+            color:v.$grey ;
+            font-weight: 500;
+            padding: 20px;
+            span{
+                background: linear-gradient(45deg, v.$primaryColor, v.$secondaryColor);
+                background-clip: text;
+                color: transparent;
+            }
+        }
+        .cards{
+            display: grid;
+            grid-template-columns: repeat(auto-fill,minmax(180px,1fr));
+            gap: 15px;
+            padding: 20px;
+            // margin-bottom: 2rem;
+            .card{
+                height: 200px;
+                padding: 15px;  
+                border-radius: 10px;
+                position: relative;
+                cursor: pointer;
+                background-color: v.$bg2;
+                transition: all 0.5s;
+                i{
+                    font-size: 20px;
+                    color: v.$secondaryColor;
+                    position: absolute;
+                    bottom: 20px;
+                    right: 20px;
+                }
+                p{
+                    color: v.$grey;
+                    font-size: 15px;
+                    transition: all 0.5s;
+                }
+                &:hover p{
+                    color: v.$secondaryColor;
+                }
+                &:hover{
+                    box-shadow: 0 0 10px v.$secondaryColor;
+
+                }
+            }
+        }
+        .main-bottom{
+            position: relative;
+            // width: 100%;
+            // max-width: 50vw;
+            margin: 0px 2vh;
+            
+            .search-box{
+                position: fixed;
+                // margin-top: 10vh;
+                // background-color: yellowgreen   ;
+                // position: absolute;
+                width: 65vw;
+                bottom: 10px;
+                display: flex;
+                // align-items: center;
+                // justify-content: center;
+                padding: 1rem 1rem;
+                background-color: v.$bg2;
+                border-radius: 50px; 
+
+                input{
+                    flex: 2;
+                    background:transparent;
+                    border: none;
+                    outline:none;
+                    // padding: 1rem;
+                    font-size:15px;
+                    color: v.$secondaryColor;
+                }
+                div{
+                    display: flex;
+                    // gap: 1.5rem;
+                    i{
+                        transition: all 0.5s;
+                        cursor: pointer;
+                        border-radius: 50px;
+                        padding: 1rem;
+                        background-color: v.$secondaryColor;
+                        // &:hover{
+                        //     transform: rotate(-40deg);
+                        // }
+                    }
+                }
+            }
+
+        }
+    }
+    .result{
+        padding:0 5%;
+        max-height: 85vh;
+        overflow-y: scroll;
+        color: v.$grey;
+        &::-webkit-scrollbar{
+            display: none;
+        }
+        i{
+            color: v.$secondaryColor;
+        }
+        .result-title{
+            margin: 40px 0px;
+            display: flex;
+            gap: 20px;
+        }
+        .result-data{
+            margin: 0;
+            display: flex;
+            align-items: start;
+            gap: 20px;
+            .loader {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    hr {
+                        border-radius: 4px;
+                        border: none;
+                        background: linear-gradient(to right, v.$primaryColor,v.$secondaryColor,v.$primaryColor);
+                        background-size: 800px 50px;
+                        height: 20px;
+                        @include anim.loader();
+                    }
+                }
+            }
+        }
+    }
+    .bottom-info{
+        text-align: center;
+        margin: 10px 0;
+        font-size: 10px;
+        font-weight: 400;
+        // line-height: 1.8;
+        color: v.$grey;
+        // display: flex;
+        // gap: 30%;
+        justify-content: space-between;
+
+        //made by Vaishak
+        a{
+            transition: all 0.5s;
+            text-decoration: none;
+            color: v.$secondaryColor;
+            &:hover{
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
+        }
+    }
